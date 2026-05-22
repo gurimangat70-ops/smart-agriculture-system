@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Agriculture Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Smart Agriculture Monitoring and Irrigation System</h1>
+    <p>Connected dashboard using backend API and simulated IoT sensor data</p>
+  </header>
+
+  <main class="container">
+    <section class="api-status">
+      <strong>API Status:</strong> <span id="apiStatus">Checking...</span>
+    </section>
+
+    <section class="cards">
+      <div class="card">
+        <h3>Soil Moisture</h3>
+        <div class="value" id="soilMoisture">--%</div>
+      </div>
+
+      <div class="card">
+        <h3>Temperature</h3>
+        <div class="value" id="temperature">--°C</div>
+      </div>
+
+      <div class="card">
+        <h3>Humidity</h3>
+        <div class="value" id="humidity">--%</div>
+      </div>
+
+      <div class="card">
+        <h3>Light Intensity</h3>
+        <div class="value" id="light">-- lux</div>
+      </div>
+
+      <div class="card">
+        <h3>Irrigation Status</h3>
+        <div id="irrigationStatus" class="status off">OFF</div>
+      </div>
+
+      <div class="card">
+        <h3>Crop Health</h3>
+        <div class="value" id="cropHealth">--</div>
+      </div>
+    </section>
+
+    <section class="controls">
+      <h2>Control Panel</h2>
+      <button onclick="toggleIrrigation()">Manual Irrigation Toggle</button>
+      <button onclick="resetSimulation()">Reset Simulation</button>
+      <p><strong>Automation Rule:</strong> Irrigation turns ON when soil moisture is below 35% and turns OFF when it reaches 60%.</p>
+    </section>
+
+    <section class="charts">
+      <canvas id="environmentChart"></canvas>
+      <canvas id="moistureChart"></canvas>
+    </section>
+
+    <section class="alerts">
+      <h2>Alerts and Notifications</h2>
+      <div id="alertsBox">No alerts yet.</div>
+    </section>
+
+    <section class="testing">
+      <h2>Implementation Testing Results</h2>
+      <table>
+        <tr>
+          <th>Test Case</th>
+          <th>Expected Result</th>
+          <th>Status</th>
+        </tr>
+        <tr>
+          <td>Backend API connection</td>
+          <td>Dashboard fetches data from /api/sensors</td>
+          <td>Pass</td>
+        </tr>
+        <tr>
+          <td>Sensor values update automatically</td>
+          <td>Dashboard updates every 3 seconds</td>
+          <td>Pass</td>
+        </tr>
+        <tr>
+          <td>Low soil moisture detection</td>
+          <td>Alert appears when moisture is below 35%</td>
+          <td>Pass</td>
+        </tr>
+        <tr>
+          <td>Automated irrigation</td>
+          <td>Irrigation turns ON when moisture is low</td>
+          <td>Pass</td>
+        </tr>
+        <tr>
+          <td>Manual irrigation control</td>
+          <td>User can toggle irrigation using dashboard button</td>
+          <td>Pass</td>
+        </tr>
+        <tr>
+          <td>Historical data visualization</td>
+          <td>Charts display latest sensor history from backend</td>
+          <td>Pass</td>
+        </tr>
+      </table>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
